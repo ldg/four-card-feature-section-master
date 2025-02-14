@@ -1,0 +1,213 @@
+@use './utils/' as u;
+
+/* css custom properties*/
+:root {
+	--clr-red: hsl(0, 78%, 62%);
+	--clr-cyan: hsl(180, 62%, 55%);
+	--clr-orange: hsl(34, 97%, 64%);
+	--clr-blue: hsl(212, 86%, 64%);
+	--clr-grey-500: hsl(234, 12%, 34%);
+	--clr-grey-400: hsl(212, 6%, 44%);
+	--clr-white: hsl(0, 0%, 100%);
+}
+
+/* reset */
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Poppins', sans-serif;
+	color: var(--clr-grey-500);
+}
+header {
+	display: grid;
+	margin-top: u.rem(56);
+	padding-inline: u.rem(30);
+	text-align: center;
+
+	h1 span.light {
+		@include u.heading-mobile(200);
+	}
+	h1 span.dark {
+		@include u.heading-mobile(600);
+	}
+
+	p {
+		@include u.body-mobile;
+	}
+
+	@media screen and (min-width: 768px) {
+		h1 span.light {
+			@include u.heading-desktop(200);
+		}
+		h1 span.dark {
+			@include u.heading-desktop(600);
+		}
+
+		p {
+			margin-top: u.rem(16);
+			max-width: u.rem(540);
+			margin-inline: auto;
+
+			@include u.body-desktop;
+		}
+	}
+}
+
+.cards {
+	width: u.rem(314);
+	margin-top: u.rem(60);
+	margin-bottom: u.rem(46);
+	margin-inline: auto;
+
+	@media screen and (min-width: 768px) {
+		display: grid;
+		margin-top: u.rem(40);
+		grid-template-columns: repeat(10, 1fr);
+		grid-template-rows: repeat(3, 1fr);
+		justify-content: center;
+		// gap: u.rem(32);
+	}
+
+	@media screen and (min-width: 1000px) {
+		grid-template-columns: repeat(12, 1fr);
+		grid-template-rows: repeat(2, 1fr);
+	}
+}
+.card {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 4px 1fr 1fr;
+	margin-top: u.rem(32);
+	padding-bottom: u.rem(32);
+	border-radius: u.rem(8);
+	box-shadow: 0 15px 30px -11px rgba(131, 161, 210, 0.5);
+	margin-inline: auto;
+
+	@media screen and (min-width: 768px) {
+		width: u.rem(314);
+		height: u.rem(250);
+
+		&[data-title='Supervisor'] {
+			grid-column: 3/9;
+			grid-row: 1/2;
+		}
+
+		&[data-title='Team Builder'] {
+			grid-column: 1/6;
+			grid-row: 2/3;
+			margin-right: 1rem;
+		}
+
+		&[data-title='Karma'] {
+			grid-column: 6/11;
+			grid-row: 2/3;
+			margin-left: 1rem;
+		}
+		&[data-title='Calculator'] {
+			grid-column: 3/9;
+			grid-row: 3/4;
+		}
+	}
+
+	@media screen and (min-width: 1000px) {
+		width: u.rem(350);
+		height: u.rem(250);
+
+		&[data-title='Supervisor'] {
+			grid-column: 1/6;
+			grid-row: 2/3;
+			margin-top: -6.8rem;
+			margin-left: -22rem;
+		}
+
+		&[data-title='Team Builder'] {
+			grid-column: 3/9;
+			grid-row: 1/2;
+			margin-inline: u.rem(32);
+		}
+
+		&[data-title='Karma'] {
+			grid-column: 3/9;
+			grid-row: 2/3;
+			margin-inline: u.rem(32);
+		}
+
+		&[data-title='Calculator'] {
+			grid-column: 6/11;
+			grid-row: 2/3;
+			margin-top: -6.8rem;
+			margin-right: -22rem;
+		}
+	}
+
+	&__color-bar {
+		display: block;
+		width: 100%;
+		height: 4px;
+		grid-column: 1/-1;
+		grid-row: 1/2;
+		border-top-right-radius: u.rem(8);
+		border-top-left-radius: u.rem(8);
+
+		&.cyan {
+			background-color: var(--clr-cyan);
+		}
+		&.red {
+			background-color: var(--clr-red);
+		}
+		&.orange {
+			background-color: var(--clr-orange);
+		}
+		&.blue {
+			background-color: var(--clr-blue);
+		}
+	}
+	&__content {
+		grid-column: 1 / -1;
+		margin-top: u.rem(32);
+		margin-inline: u.rem(32);
+	}
+	&__title {
+		@media screen and (min-width: 1000px) {
+			margin-top: -4px;
+			margin-left: 2px;
+		}
+
+		@include u.card-heading;
+	}
+	&__text {
+		@include u.card-body;
+
+		@media screen and (min-width: 1000px) {
+			margin-top: 4px;
+			margin-left: 2px;
+		}
+	}
+
+	&__icon {
+		grid-column: 2/3;
+		grid-row: 3/4;
+		justify-self: end;
+		align-self: end;
+		margin-right: u.rem(32);
+
+		@media screen and (min-width: 1000px) {
+			margin-bottom: 1rem;
+		}
+	}
+}
+
+/* Attribution */
+.attribution {
+	font-size: 11px;
+	text-align: center;
+}
+.attribution a {
+	color: hsl(228, 45%, 44%);
+}

@@ -1,0 +1,229 @@
+/* css custom properties*/
+:root {
+  --clr-red: hsl(0, 78%, 62%);
+  --clr-cyan: hsl(180, 62%, 55%);
+  --clr-orange: hsl(34, 97%, 64%);
+  --clr-blue: hsl(212, 86%, 64%);
+  --clr-grey-500: hsl(234, 12%, 34%);
+  --clr-grey-400: hsl(212, 6%, 44%);
+  --clr-white: hsl(0, 0%, 100%);
+}
+
+/* reset */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  color: var(--clr-grey-500);
+}
+
+header {
+  display: grid;
+  margin-top: 3.5rem;
+  padding-inline: 1.875rem;
+  text-align: center;
+}
+header h1 span.light {
+  font-weight: 200;
+  font-size: 1.5rem;
+  line-height: 1.4;
+  letter-spacing: 0.015625rem;
+}
+header h1 span.dark {
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 1.4;
+  letter-spacing: 0.015625rem;
+}
+header p {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  letter-spacing: 0.00625rem;
+}
+@media screen and (min-width: 768px) {
+  header h1 span.light {
+    font-size: 2.25rem;
+    font-weight: 200;
+    line-height: 1.4;
+    letter-spacing: 0.015625rem;
+  }
+  header h1 span.dark {
+    font-size: 2.25rem;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 0.015625rem;
+  }
+  header p {
+    margin-top: 1rem;
+    max-width: 33.75rem;
+    margin-inline: auto;
+    font-size: 0.9375rem;
+    line-height: 1.4;
+    letter-spacing: 0.00625rem;
+  }
+}
+
+.cards {
+  width: 19.625rem;
+  margin-top: 3.75rem;
+  margin-bottom: 2.875rem;
+  margin-inline: auto;
+}
+@media screen and (min-width: 768px) {
+  .cards {
+    display: grid;
+    margin-top: 2.5rem;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    justify-content: center;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .cards {
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 4px 1fr 1fr;
+  margin-top: 2rem;
+  padding-bottom: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 15px 30px -11px rgba(131, 161, 210, 0.5);
+  margin-inline: auto;
+}
+@media screen and (min-width: 768px) {
+  .card {
+    width: 19.625rem;
+    height: 15.625rem;
+  }
+  .card[data-title=Supervisor] {
+    grid-column: 3/9;
+    grid-row: 1/2;
+  }
+  .card[data-title="Team Builder"] {
+    grid-column: 1/6;
+    grid-row: 2/3;
+    margin-right: 1rem;
+  }
+  .card[data-title=Karma] {
+    grid-column: 6/11;
+    grid-row: 2/3;
+    margin-left: 1rem;
+  }
+  .card[data-title=Calculator] {
+    grid-column: 3/9;
+    grid-row: 3/4;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .card {
+    width: 21.875rem;
+    height: 15.625rem;
+  }
+  .card[data-title=Supervisor] {
+    grid-column: 1/6;
+    grid-row: 2/3;
+    margin-top: -6.8rem;
+    margin-left: -22rem;
+  }
+  .card[data-title="Team Builder"] {
+    grid-column: 3/9;
+    grid-row: 1/2;
+    margin-inline: 2rem;
+  }
+  .card[data-title=Karma] {
+    grid-column: 3/9;
+    grid-row: 2/3;
+    margin-inline: 2rem;
+  }
+  .card[data-title=Calculator] {
+    grid-column: 6/11;
+    grid-row: 2/3;
+    margin-top: -6.8rem;
+    margin-right: -22rem;
+  }
+}
+.card__color-bar {
+  display: block;
+  width: 100%;
+  height: 4px;
+  grid-column: 1/-1;
+  grid-row: 1/2;
+  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+}
+.card__color-bar.cyan {
+  background-color: var(--clr-cyan);
+}
+.card__color-bar.red {
+  background-color: var(--clr-red);
+}
+.card__color-bar.orange {
+  background-color: var(--clr-orange);
+}
+.card__color-bar.blue {
+  background-color: var(--clr-blue);
+}
+.card__content {
+  grid-column: 1/-1;
+  margin-top: 2rem;
+  margin-inline: 2rem;
+}
+.card__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0;
+}
+@media screen and (min-width: 1000px) {
+  .card__title {
+    margin-top: -4px;
+    margin-left: 2px;
+  }
+}
+.card__text {
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0.09px;
+}
+@media screen and (min-width: 1000px) {
+  .card__text {
+    margin-top: 4px;
+    margin-left: 2px;
+  }
+}
+.card__icon {
+  grid-column: 2/3;
+  grid-row: 3/4;
+  justify-self: end;
+  align-self: end;
+  margin-right: 2rem;
+}
+@media screen and (min-width: 1000px) {
+  .card__icon {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Attribution */
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+/*# sourceMappingURL=styles.css.map */
